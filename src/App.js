@@ -33,7 +33,7 @@ function App() {
   useEffect(() => {
     updateEvents()
     setCurrentEvent(events[0])
-    console.log(events)
+    console.log(currentEvent)
   },[events, updateEvents])
 
   return (

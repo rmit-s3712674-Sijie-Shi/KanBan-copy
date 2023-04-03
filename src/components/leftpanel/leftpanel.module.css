@@ -41,3 +41,7 @@
   .event:hover {
     background-color: rgb(238, 97, 97);
   }
+
+  .selected {
+    background-color: rgba(129, 129, 129, 0.89);
+  }
