@@ -1,2 +1,2 @@
 ### KanBan copy
-This is a ongoing personal practice project
+This is an ongoing personal practice project
