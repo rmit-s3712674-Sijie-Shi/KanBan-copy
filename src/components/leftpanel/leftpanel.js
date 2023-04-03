@@ -3,7 +3,8 @@ import styles from "./leftpanel.module.css"
 import AddButton from "../addbutton/AddButton";
 
 const LeftPanel = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
-    console.log(events)
+    // adding events
+    // temp using system input
     const handleAddingEvent = useCallback(() => {
         const title = prompt("enter a title :")
         if(events.find((value) =>
