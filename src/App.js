@@ -28,13 +28,13 @@ function App() {
     } else {
       await localStorage.setItem('events', JSON.stringify(events))
     }
-  }, [events])
+  }, [events, initValue])
 
   useEffect(() => {
     updateEvents()
     setCurrentEvent(events[0])
     console.log(events)
-  },[events])
+  },[events, updateEvents])
 
   return (
     <div className="App">
