@@ -11,7 +11,7 @@ let status = {
     done: "done"
 }
 const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
-    //console.log(currentEvent)
+    console.log(currentEvent)
     const handleAddingEvent = useCallback((status) => {
         const task = prompt("enter a task :")
         if(!task) return
@@ -19,13 +19,16 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
             setEvents((prev) => 
             {
                 let arrayCopy = [...prev]
-                const index = prev.findIndex((event) => event.title = currentEvent.title)
+                const index = prev.findIndex((event) => event.title === currentEvent.title)
                 let eventCopy = arrayCopy[index]
                 eventCopy[status].push(task)
                 arrayCopy.splice(index, 1, eventCopy)
+                //console.log(arrayCopy)
                 return arrayCopy
             }
             )
+        } else {
+            alert("exist task")
         }
     }, [events])
     return (

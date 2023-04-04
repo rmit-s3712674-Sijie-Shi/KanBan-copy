@@ -6,6 +6,7 @@ const LeftPanel = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
     // adding events
     // temp using system input
     const handleAddingEvent = useCallback(() => {
+        console.log('add event')
         const title = prompt("enter a title :")
         if(events.find((value) =>
             value.title.toLowerCase() === title.toLowerCase())

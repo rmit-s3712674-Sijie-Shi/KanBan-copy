@@ -22,10 +22,12 @@ function App() {
   const [currentEvent, setCurrentEvent] = useState(events[0])
 
   const updateEvents = useCallback(async () => {
+    console.log("change localstorage")
     if(!events.length) {
       await localStorage.setItem('events', JSON.stringify(initValue))
       setEvents(JSON.parse(localStorage.getItem('events')))
     } else {
+      events.map(res => console.log(res))
       await localStorage.setItem('events', JSON.stringify(events))
     }
   }, [events, initValue])
