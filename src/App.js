@@ -19,7 +19,7 @@ function App() {
       : initValue
   })
 
-  const [currentEvent, setCurrentEvent] = useState()
+  const [currentEvent, setCurrentEvent] = useState(events[0])
 
   const updateEvents = useCallback(async () => {
     if(!events.length) {
@@ -32,8 +32,6 @@ function App() {
 
   useEffect(() => {
     updateEvents()
-    setCurrentEvent(events[0])
-    console.log(currentEvent)
   },[events, updateEvents])
 
   return (
