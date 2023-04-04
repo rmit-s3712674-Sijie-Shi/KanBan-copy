@@ -36,8 +36,8 @@ const LeftPanel = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                 </div>
 
                 <div className={styles.eventList}>
-                    {events.map((value) => (
-                        <div className={`${styles.event} ${value.title === currentEvent.title ? styles.selected : ''}`} onClick={() => setCurrentEvent(value)}>{value.title}</div>
+                    {events.map((value, i) => (
+                        <div key={i} className={`${styles.event} ${value.title === currentEvent.title ? styles.selected : ''}`} onClick={() => setCurrentEvent(value)}>{value.title}</div>
                     ))}
                 </div>
             </div>

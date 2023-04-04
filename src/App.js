@@ -7,9 +7,9 @@ function App() {
   const initValue = useMemo(() => [
     {
       title: "inital",
-      todo: [],
-      doing:[],
-      done:[]
+      todo: ["test1", "test2"],
+      doing:["test3"],
+      done:["test5"]
     },
   ], [])
 

@@ -1,0 +1,10 @@
+.cardContainer{
+    padding: 10%;
+    border: 0.1px solid rgb(34, 34, 34);
+    border-radius: 1rem;
+    margin: 10%;
+}
+
+.taskTitle {
+    text-align: center;
+}
