@@ -18,3 +18,17 @@
     border-radius: 1rem;
 
 }
+
+.addButton {
+    font-size: 1.5em;
+    width: 150px;
+    border-radius: 0.5rem;
+    margin: 10px 15px 10px 15px;
+    transition: 0.5s;
+    cursor: pointer;
+    background-color: rgb(211, 210, 210);
+}
+
+.addButton:hover {
+    background-color: rgb(238, 97, 97);
+}

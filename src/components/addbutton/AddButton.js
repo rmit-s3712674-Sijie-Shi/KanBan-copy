@@ -1,8 +1,12 @@
 import React from "react";
 
+const style = {
+    "paddingBottom" : '3px'
+}
+
 const AddButton = ({ handler }) => {
     return (
-        <div onClick={handler}> + </div>
+        <div onClick={handler} style={style}> + </div>
     )
 }
 
