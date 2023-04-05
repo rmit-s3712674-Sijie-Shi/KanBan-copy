@@ -45,9 +45,19 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                     </div>
                     <div className={styles.column}>
                        <div className={styles.title}>In Progress</div> 
+                       <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.doing)}></AddButton></div>
+                    
+                    {currentEvent.todo.map((value, i) => (
+                        <TaskCard task={value} status={status.doing} key={i}></TaskCard>
+                    ))}
                     </div>
                     <div className={styles.column}>
                     <div className={styles.title}> Done</div>
+                    <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.done)}></AddButton></div>
+                    
+                    {currentEvent.todo.map((value, i) => (
+                        <TaskCard task={value} status={status.done} key={i}></TaskCard>
+                    ))}
                     </div>
                 </div>
 
