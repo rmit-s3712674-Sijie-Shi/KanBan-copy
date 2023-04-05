@@ -18,19 +18,19 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
         if(!currentEvent[status].find(res => res === task)) {
             setEvents((prev) => 
             {
-                let arrayCopy = [...prev]
+                const arrayCopy = [...prev]
                 const index = prev.findIndex((event) => event.title === currentEvent.title)
-                let eventCopy = arrayCopy[index]
+                const eventCopy = arrayCopy[index]
                 eventCopy[status].push(task)
                 arrayCopy.splice(index, 1, eventCopy)
-                //console.log(arrayCopy)
+                console.log(eventCopy[status])
                 return arrayCopy
             }
             )
         } else {
             alert("exist task")
         }
-    }, [events])
+    }, [currentEvent])
     return (
         <>
             <div className={`task-box `}>
@@ -47,7 +47,7 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                        <div className={styles.title}>In Progress</div> 
                        <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.doing)}></AddButton></div>
                     
-                    {currentEvent.todo.map((value, i) => (
+                    {currentEvent.doing.map((value, i) => (
                         <TaskCard task={value} status={status.doing} key={i}></TaskCard>
                     ))}
                     </div>
@@ -55,7 +55,7 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                     <div className={styles.title}> Done</div>
                     <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.done)}></AddButton></div>
                     
-                    {currentEvent.todo.map((value, i) => (
+                    {currentEvent.done.map((value, i) => (
                         <TaskCard task={value} status={status.done} key={i}></TaskCard>
                     ))}
                     </div>
