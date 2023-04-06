@@ -1,5 +1,6 @@
 .cardContainer{
-    padding: 10%;
+    position: relative;
+    padding: 5%;
     border: 0.1px solid rgb(34, 34, 34);
     border-radius: 1rem;
     margin: 10%;
@@ -7,4 +8,20 @@
 
 .taskTitle {
     text-align: center;
+    padding-bottom: 10px;
+}
+
+.description {
+    text-align: left;
+    font-size: small;
+}
+
+.removeBar {
+    text-align: right;
+    position: absolute;
+    left: 85%;
+    top: -10%;
+    color: red;
+    cursor: pointer;
+    font-size: x-large;
 }

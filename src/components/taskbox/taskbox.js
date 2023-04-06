@@ -12,7 +12,6 @@ let status = {
     done: "done"
 }
 const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
-    console.log(currentEvent)
     const handleAddingEvent = useCallback((status) => {
         const taskTtile = prompt("enter a task :")
         const task = {
@@ -20,7 +19,7 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
             id: uuid(),
             detail: {description: "description"}
         }
-        if (!task) return
+        if (!taskTtile) return
             setEvents((prev) => {
                 const arrayCopy = [...prev]
                 const index = prev.findIndex((event) => event.title === currentEvent.title)
@@ -34,12 +33,15 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
     }, [currentEvent])
 
     const handleRemovingEvent = useCallback((status, id) => {
+        console.log(status, id)
         setEvents((prev) => {
             const arrayCopy = [...prev]
             const index = prev.findIndex((event) => event.title === currentEvent.title)
-            const eventCopy = arrayCopy[index]
-            eventCopy[status].filter(res => res.id !== id)
-            console.log(eventCopy[status])
+            //const eventCopy = arrayCopy[index]
+            arrayCopy[index][status] = arrayCopy[index][status].filter(res => res.id !== id)
+            //arrayCopy.splice(index, 1, target)
+            console.log(arrayCopy)
+            //console.log(eventCopy)
             return arrayCopy
         })
     }, [currentEvent])
@@ -53,7 +55,7 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                         <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.todo)}></AddButton></div>
 
                         {currentEvent.todo.map((value) => (
-                            <TaskCard task={value} status={status.todo} key={value.id}></TaskCard>
+                            <TaskCard task={value} status={status.todo} handleRemove={handleRemovingEvent}></TaskCard>
                         ))}
                     </div>
                     <div className={styles.column}>
@@ -61,7 +63,7 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                         <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.doing)}></AddButton></div>
 
                         {currentEvent.doing.map((value) => (
-                            <TaskCard task={value} status={status.doing} key={value.id}></TaskCard>
+                            <TaskCard task={value} status={status.doing}></TaskCard>
                         ))}
                     </div>
                     <div className={styles.column}>
@@ -69,7 +71,7 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                         <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.done)}></AddButton></div>
 
                         {currentEvent.done.map((value) => (
-                            <TaskCard task={value} status={status.done} key={value.id}></TaskCard>
+                            <TaskCard task={value} status={status.done}></TaskCard>
                         ))}
                     </div>
                 </div>
