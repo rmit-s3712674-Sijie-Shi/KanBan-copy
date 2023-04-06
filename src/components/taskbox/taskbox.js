@@ -33,9 +33,14 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
             )
     }, [currentEvent])
 
-    const handleRemovingEvent = useCallback((status) => {
+    const handleRemovingEvent = useCallback((status, id) => {
         setEvents((prev) => {
-
+            const arrayCopy = [...prev]
+            const index = prev.findIndex((event) => event.title === currentEvent.title)
+            const eventCopy = arrayCopy[index]
+            eventCopy[status].filter(res => res.id !== id)
+            console.log(eventCopy[status])
+            return arrayCopy
         })
     }, [currentEvent])
 
