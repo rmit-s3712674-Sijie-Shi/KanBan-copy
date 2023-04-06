@@ -2,14 +2,15 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import './App.css';
 import LeftPanel from './components/leftpanel/leftpanel';
 import TaskBox from './components/taskbox/taskbox';
+import uuid from 'react-uuid';
 
 function App() {
   const initValue = useMemo(() => [
     {
       title: "inital",
-      todo: ["test1", "test2"],
-      doing:["test3"],
-      done:["test5"]
+      todo: [{taskName: "task1", id: uuid(), detail: {description: "description"}}, {taskName: "task2", id: uuid(), detail: {description: "description"}}],
+      doing:[{taskName: "task3", id: uuid(), detail: {description: "description"}}],
+      done:[{taskName: "task4", id: uuid(), detail: {description: "description"}}]
     },
   ], [])
 
