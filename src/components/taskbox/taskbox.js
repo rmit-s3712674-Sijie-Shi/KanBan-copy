@@ -3,7 +3,7 @@ import styles from "./taskbox.module.css"
 import TaskCard from "../tastcard/taskcard";
 import AddButton from "../addbutton/AddButton";
 import uuid from "react-uuid";
-
+import { Droppable } from "react-beautiful-dnd";
 
 
 let status = {
@@ -50,6 +50,7 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
         <>
             <div className={`task-box `}>
                 <div className={styles.container}>
+                    <Droppable>
                     <div className={styles.column}>
                         <div className={styles.title}>To do </div>
                         <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.todo)}></AddButton></div>
@@ -58,6 +59,8 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                             <TaskCard task={value} status={status.todo} handleRemove={handleRemovingEvent}></TaskCard>
                         ))}
                     </div>
+                    </Droppable>
+                    <Droppable>
                     <div className={styles.column}>
                         <div className={styles.title}>In Progress</div>
                         <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.doing)}></AddButton></div>
@@ -66,6 +69,8 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                             <TaskCard task={value} status={status.doing}></TaskCard>
                         ))}
                     </div>
+                    </Droppable>
+                    <Droppable>
                     <div className={styles.column}>
                         <div className={styles.title}> Done</div>
                         <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.done)}></AddButton></div>
@@ -74,6 +79,7 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                             <TaskCard task={value} status={status.done}></TaskCard>
                         ))}
                     </div>
+                    </Droppable>
                 </div>
 
             </div>
