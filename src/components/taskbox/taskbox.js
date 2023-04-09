@@ -3,7 +3,7 @@ import styles from "./taskbox.module.css"
 import TaskCard from "../tastcard/taskcard";
 import AddButton from "../addbutton/AddButton";
 import uuid from "react-uuid";
-import { Droppable } from "react-beautiful-dnd";
+import { Droppable, DragDropContext, Draggable } from "react-beautiful-dnd";
 
 
 let status = {
@@ -49,38 +49,46 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
     return (
         <>
             <div className={`task-box `}>
+                <DragDropContext>
                 <div className={styles.container}>
-                    <Droppable>
+                    <Droppable droppableId={"todo"}>
                     <div className={styles.column}>
                         <div className={styles.title}>To do </div>
                         <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.todo)}></AddButton></div>
 
-                        {currentEvent.todo.map((value) => (
+                        {currentEvent.todo.map((value, index) => (
+                            <Draggable key={value.id} draggableId={value.id} index={index}>
                             <TaskCard task={value} status={status.todo} handleRemove={handleRemovingEvent}></TaskCard>
+                            </Draggable>
                         ))}
                     </div>
                     </Droppable>
-                    <Droppable>
+                    <Droppable droppableId={"doing"}>
                     <div className={styles.column}>
                         <div className={styles.title}>In Progress</div>
                         <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.doing)}></AddButton></div>
 
-                        {currentEvent.doing.map((value) => (
+                        {currentEvent.doing.map((value, index) => (
+                            <Draggable key={value.id} draggableId={value.id} index={index}>
                             <TaskCard task={value} status={status.doing}></TaskCard>
+                            </Draggable>
                         ))}
                     </div>
                     </Droppable>
-                    <Droppable>
+                    <Droppable droppableId={"done"}>
                     <div className={styles.column}>
                         <div className={styles.title}> Done</div>
                         <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.done)}></AddButton></div>
 
-                        {currentEvent.done.map((value) => (
+                        {currentEvent.done.map((value, index) => (
+                            <Draggable key={value.id} draggableId={value.id} index={index}>
                             <TaskCard task={value} status={status.done}></TaskCard>
+                            </Draggable>
                         ))}
                     </div>
                     </Droppable>
                 </div>
+                </DragDropContext>
 
             </div>
         </>
