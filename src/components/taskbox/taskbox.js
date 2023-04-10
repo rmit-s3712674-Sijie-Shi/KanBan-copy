@@ -52,16 +52,24 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                 <DragDropContext>
                 <div className={styles.container}>
                     <Droppable droppableId={"todo"}>
-                    <div className={styles.column}>
-                        <div className={styles.title}>To do </div>
-                        <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.todo)}></AddButton></div>
-
-                        {currentEvent.todo.map((value, index) => (
-                            <Draggable key={value.id} draggableId={value.id} index={index}>
-                            <TaskCard task={value} status={status.todo} handleRemove={handleRemovingEvent}></TaskCard>
-                            </Draggable>
-                        ))}
-                    </div>
+                    {(provided, snapshot) => {
+                        return(
+                            <div className={styles.column}
+                            ref={provided.innerRef}
+                            {...provided.droppableProps}
+                            >
+                            <div className={styles.title}>To do </div>
+                            <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.todo)}></AddButton></div>
+                            {currentEvent.todo.map((value, index) => (
+                                <Draggable key={value.id} draggableId={value.id} index={index}>
+                                    {(provided, snapshot) => (
+                                        <TaskCard task={value} status={status.todo} handleRemove={handleRemovingEvent} provided={provided} snapshot={snapshot}></TaskCard>
+                                    )}
+                                </Draggable>
+                            ))}
+                        </div>
+                        )
+                    }}
                     </Droppable>
                     <Droppable droppableId={"doing"}>
                     <div className={styles.column}>
