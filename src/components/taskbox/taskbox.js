@@ -52,8 +52,7 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                 <DragDropContext>
                 <div className={styles.container}>
                     <Droppable droppableId={"todo"}>
-                    {(provided, snapshot) => {
-                        return(
+                    {(provided, snapshot) => (        
                             <div className={styles.column}
                             ref={provided.innerRef}
                             {...provided.droppableProps}
@@ -67,11 +66,13 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                                     )}
                                 </Draggable>
                             ))}
+                             {provided.placeholder}
                         </div>
-                        )
-                    }}
+                        
+                    )
+                    }
                     </Droppable>
-                    <Droppable droppableId={"doing"}>
+                    {/* <Droppable droppableId={"doing"}>
                     <div className={styles.column}>
                         <div className={styles.title}>In Progress</div>
                         <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.doing)}></AddButton></div>
@@ -94,7 +95,7 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                             </Draggable>
                         ))}
                     </div>
-                    </Droppable>
+                    </Droppable> */}
                 </div>
                 </DragDropContext>
 
