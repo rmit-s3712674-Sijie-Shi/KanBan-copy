@@ -15,9 +15,9 @@ const TaskCard = ({task, status, handleRemove, provided, snapshot}) => {
                 <div className={styles.description}>
                     {task.detail.description}
                 </div>
-                {/* <div className={styles.removeBar} onClick={() => handleRemove(status, task.id)}>
+                <div className={styles.removeBar} onClick={() => handleRemove(status, task.id)}>
                     -
-                </div> */}
+                </div>
             </div>
         </>
     )

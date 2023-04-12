@@ -46,10 +46,14 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
         })
     }, [currentEvent])
 
+    const handleDragEnd = useCallback((result) => {
+        console.log(result)
+    })
+
     return (
         <>
             <div className={`task-box `}>
-                <DragDropContext>
+                <DragDropContext onDragEnd={(result) => handleDragEnd(result)}>
                 <div className={styles.container}>
                     <Droppable droppableId={"todo"}>
                     {(provided, snapshot) => (        

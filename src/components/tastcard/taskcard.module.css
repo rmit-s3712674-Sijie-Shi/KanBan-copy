@@ -3,7 +3,7 @@
     border: 0.1px solid rgb(34, 34, 34);
     border-radius: 1rem;
     padding-bottom: 2px;
-    margin-bottom: 10px;
+    margin: 10px;
 }
 
 .taskTitle {
@@ -22,7 +22,7 @@
     text-align: right;
     position: absolute;
     left: 85%;
-    top: -10%;
+    top: -5%;
     color: red;
     cursor: pointer;
     font-size: x-large;
