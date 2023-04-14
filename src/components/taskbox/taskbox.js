@@ -66,16 +66,16 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
     return (
         <>
             <DragDropContext onDragEnd={(result) => handleDragEnd(result)}>
-                <div>
-                    <div className={styles.container}>
+                <div className={styles.container}>
+                    <div className={styles.column}>
+                        <div className={styles.title}>To do </div>
+                        <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.todo)}></AddButton></div>
                         <Droppable droppableId={"todo"}>
                             {(provided, snapshot) => (
-                                <div className={styles.column}
+                                <div
                                     ref={provided.innerRef}
                                     {...provided.droppableProps}
                                 >
-                                    <div className={styles.title}>To do </div>
-                                    <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.todo)}></AddButton></div>
                                     {currentEvent.todo.map((value, index) => (
                                         <Draggable key={value.id} draggableId={value.id} index={index}>
                                             {(provided, snapshot) => (
@@ -89,14 +89,16 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                             )
                             }
                         </Droppable>
+                    </div>
+                    <div className={styles.column}>
+                        <div className={styles.title}>In Progress</div>
+                        <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.doing)}></AddButton></div>
                         <Droppable droppableId={"doing"}>
                             {(provided, snapshot) => (
-                                <div className={styles.column}
+                                <div
                                     ref={provided.innerRef}
                                     {...provided.droppableProps}
                                 >
-                                    <div className={styles.title}>In Progress</div>
-                                    <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.doing)}></AddButton></div>
 
                                     {currentEvent.doing.map((value, index) => (
                                         <Draggable key={value.id} draggableId={value.id} index={index}>
@@ -110,15 +112,16 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                             )
                             }
                         </Droppable>
+                    </div>
+                    <div className={styles.column}>
+                        <div className={styles.title}> Done</div>
+                        <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.done)}></AddButton></div>
                         <Droppable droppableId={"done"}>
                             {(provided, snapshot) => (
-                                <div className={styles.column}
+                                <div
                                     ref={provided.innerRef}
                                     {...provided.droppableProps}
                                 >
-                                    <div className={styles.title}> Done</div>
-                                    <div className={styles.addButton}><AddButton handler={() => handleAddingEvent(status.done)}></AddButton></div>
-
                                     {currentEvent.done.map((value, index) => (
                                         <Draggable key={value.id} draggableId={value.id} index={index}>
                                             {(provided, snapshot) => (
