@@ -18,7 +18,7 @@
     margin: 10px 40px 10px 40px;
     transition: 0.5s;
     cursor: pointer;
-    background-color: rgb(211, 210, 210);
+    background-color: rgba(223, 223, 223, 0.596);
 }
 
 .addButton:hover {
@@ -35,13 +35,13 @@
     margin: 10px 10px;
     transition: 0.5s;
     cursor: pointer;
-    background-color: rgb(211, 210, 210);
+    background-color: rgba(240, 248, 255, 0.979);
   }
 
   .event:hover {
-    background-color: rgb(238, 97, 97);
+    background-color: rgb(243, 143, 143);
   }
 
   .selected {
-    background-color: rgba(129, 129, 129, 0.89);
+    background-color: rgba(207, 232, 253, 0.979);
   }
