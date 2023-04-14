@@ -3,7 +3,6 @@
     border: 0.1px solid rgb(34, 34, 34);
     border-radius: 10px;
     margin: 10px;
-    transition: 1.5s;
 }
 
 .taskTitle {
@@ -13,10 +12,9 @@
 }
 
 .description {
-    text-align: left;
+    text-align: center;
     font-size: small;
     margin-bottom: 20px;
-    margin-left: 5px;
 }
 
 /* .removeBar {
