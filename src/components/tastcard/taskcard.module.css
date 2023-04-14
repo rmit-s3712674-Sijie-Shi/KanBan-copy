@@ -1,9 +1,9 @@
 .cardContainer{
     position: relative;
     border: 0.1px solid rgb(34, 34, 34);
-    border-radius: 1rem;
-    padding-bottom: 2px;
+    border-radius: 10px;
     margin: 10px;
+    transition: 1.5s;
 }
 
 .taskTitle {
@@ -15,10 +15,11 @@
 .description {
     text-align: left;
     font-size: small;
-    margin: 15px;
+    margin-bottom: 20px;
+    margin-left: 5px;
 }
 
-.removeBar {
+/* .removeBar {
     text-align: right;
     position: absolute;
     left: 85%;
@@ -26,4 +27,35 @@
     color: red;
     cursor: pointer;
     font-size: x-large;
+} */
+
+.detailHolder {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 0.1px dotted rgb(190, 190, 190);
+}
+
+.deleteButton{
+    font-size: small;
+    cursor: pointer;
+    border-radius: 0 0 10px;
+    transition: background-color 0.8s;
+
+}
+
+.deleteButton:hover {
+    background-color: rgb(248, 73, 73);
+}
+
+.deleteButton:focus,
+.deleteButton:active {
+    transition: none;
+}
+
+.detailButton {
+    font-size: small;
+    cursor: pointer;
+    border-radius: 0 0 10px;
+    transition: background-color 0.5s;
+    padding-bottom: 5px;
 }
