@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./taskcard.module.css";
+import AddTask from "../addtask/addtask";
 
 const TaskCard = ({task, status, handleRemove, provided, snapshot}) => {
     const [isShown, setIsShown] = useState(false);

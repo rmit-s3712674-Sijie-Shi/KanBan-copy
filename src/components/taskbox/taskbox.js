@@ -1,9 +1,11 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import styles from "./taskbox.module.css"
 import TaskCard from "../tastcard/taskcard";
 import AddButton from "../addbutton/AddButton";
 import uuid from "react-uuid";
 import { Droppable, DragDropContext, Draggable } from "react-beautiful-dnd";
+import { TaskTemplate } from "../types"
+import AddTask from "../addtask/addtask";
 
 
 let status = {
@@ -11,9 +13,13 @@ let status = {
     doing: "doing",
     done: "done"
 }
+
 const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
+    const [showAddTask, setShowAddTask] = useState(false)
+
     const handleAddingEvent = useCallback((status) => {
         const taskTtile = prompt("enter a task :")
+        setShowAddTask(true)
         const task = {
             taskName: taskTtile,
             id: uuid(),
@@ -137,6 +143,7 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                     </div>
                 </div>
             </DragDropContext>
+            {showAddTask ? <AddTask setShowAddTask={setShowAddTask}></AddTask>: null}                
         </>
     )
 }
