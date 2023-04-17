@@ -16,10 +16,12 @@ let status = {
 
 const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
     const [showAddTask, setShowAddTask] = useState(false)
+    const [taskStatus, setTaskStatus] = useState("")
 
     const handleAddingEvent = useCallback((status) => {
         const taskTtile = prompt("enter a task :")
         setShowAddTask(true)
+        setTaskStatus(status)
         const task = {
             taskName: taskTtile,
             id: uuid(),
@@ -143,7 +145,7 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                     </div>
                 </div>
             </DragDropContext>
-            {showAddTask ? <AddTask setShowAddTask={setShowAddTask}></AddTask>: null}                
+            {showAddTask ? <AddTask setShowAddTask={setShowAddTask} action={taskStatus}></AddTask>: null}                
         </>
     )
 }
