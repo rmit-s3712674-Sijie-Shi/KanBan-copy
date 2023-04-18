@@ -19,25 +19,26 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
     const [taskStatus, setTaskStatus] = useState("")
 
     const handleAddingEvent = useCallback((status) => {
-        const taskTtile = prompt("enter a task :")
-        setShowAddTask(true)
+        //const taskTtile = prompt("enter a task :")
         setTaskStatus(status)
-        const task = {
-            taskName: taskTtile,
-            id: uuid(),
-            detail: { description: "description description description description description description description" }
-        }
-        if (!taskTtile) return
-        setEvents((prev) => {
-            const arrayCopy = [...prev]
-            const index = prev.findIndex((event) => event.title === currentEvent.title)
-            const eventCopy = arrayCopy[index]
-            eventCopy[status].push(task)
-            arrayCopy.splice(index, 1, eventCopy)
-            console.log(eventCopy[status])
-            return arrayCopy
-        }
-        )
+        setShowAddTask(true)
+        // const task = {
+        //     taskName: taskTtile,
+        //     id: uuid(),
+        //     detail: { description: "description description description description description description description" }
+        // }
+        // if (!taskTtile) return
+        // setEvents((prev) => {
+        //     const arrayCopy = [...prev]
+        //     const index = prev.findIndex((event) => event.title === currentEvent.title)
+        //     const eventCopy = arrayCopy[index]
+        //     console.log(task)
+        //     eventCopy[status].push(task)
+        //     arrayCopy.splice(index, 1, eventCopy)
+        //     console.log(eventCopy[status])
+        //     return arrayCopy
+        // }
+        // )
     }, [currentEvent])
 
     const handleRemovingEvent = useCallback((status, id) => {
@@ -70,6 +71,20 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
             return arrayCopy
         })
     }, [currentEvent])
+
+    const addNewTask = useCallback((task, action) => {
+        setEvents((prev) => {
+            const arrayCopy = [...prev]
+            const index = prev.findIndex((event) => event.title === currentEvent.title)
+            const eventCopy = arrayCopy[index]
+            console.log(action)
+            eventCopy[action].push(task)
+            arrayCopy.splice(index, 1, eventCopy)
+            console.log(eventCopy[action])
+            return arrayCopy
+        }
+        )
+    }, [currentEvent]) 
 
     return (
         <>
@@ -145,7 +160,7 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                     </div>
                 </div>
             </DragDropContext>
-            {showAddTask ? <AddTask setShowAddTask={setShowAddTask} action={taskStatus}></AddTask>: null}                
+            {showAddTask ? <AddTask setShowAddTask={setShowAddTask} action={taskStatus} addNewTask={addNewTask}></AddTask>: null}                
         </>
     )
 }
