@@ -3,6 +3,7 @@ import './App.css';
 import LeftPanel from './components/leftpanel/leftpanel';
 import TaskBox from './components/taskbox/taskbox';
 import uuid from 'react-uuid';
+import axios from 'axios';
 
 function App() {
   const initValue = useMemo(() => [
@@ -31,10 +32,19 @@ function App() {
       events.map(res => console.log(res))
       await localStorage.setItem('events', JSON.stringify(events))
     }
+
   }, [events, initValue])
+
+
+  const getAllProjects = () => {
+    axios.post("http://localhost:3001/getprojects", {
+      email: "rikusrocks@gmail.com"
+    }).then(res => console.log(res))
+  }
 
   useEffect(() => {
     updateEvents()
+    getAllProjects()
   },[events, updateEvents])
 
   return (
