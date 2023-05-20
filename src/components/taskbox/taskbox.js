@@ -87,8 +87,8 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
     }, [currentEvent]) 
 
     return (
-        <>
-            <DragDropContext onDragEnd={(result) => handleDragEnd(result)}>
+        <div>
+           <DragDropContext onDragEnd={(result) => handleDragEnd(result)}>
                 <div className={styles.container}>
                     <div className={styles.column}>
                         <div className={styles.title}>To do </div>
@@ -99,13 +99,13 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                                     ref={provided.innerRef}
                                     {...provided.droppableProps}
                                 >
-                                    {currentEvent.todo.map((value, index) => (
+                                    {currentEvent.projects.todo ? currentEvent.projects.todo.map((value, index) => (
                                         <Draggable key={value.id} draggableId={value.id} index={index}>
                                             {(provided, snapshot) => (
                                                 <TaskCard task={value} status={status.todo} handleRemove={handleRemovingEvent} provided={provided} snapshot={snapshot}></TaskCard>
                                             )}
                                         </Draggable>
-                                    ))}
+                                    )) : <div>Nothing here</div>}
                                     {provided.placeholder}
                                 </div>
 
@@ -123,13 +123,13 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                                     {...provided.droppableProps}
                                 >
 
-                                    {currentEvent.doing.map((value, index) => (
+                                    {currentEvent.projects.doing ? currentEvent.projects.doing.map((value, index) => (
                                         <Draggable key={value.id} draggableId={value.id} index={index}>
                                             {(provided, snapshot) => (
                                                 <TaskCard task={value} status={status.doing} handleRemove={handleRemovingEvent} provided={provided} snapshot={snapshot}></TaskCard>
                                             )}
                                         </Draggable>
-                                    ))}
+                                    )): <div>Nothing here</div>}
                                     {provided.placeholder}
                                 </div>
                             )
@@ -145,13 +145,13 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                                     ref={provided.innerRef}
                                     {...provided.droppableProps}
                                 >
-                                    {currentEvent.done.map((value, index) => (
+                                    {currentEvent.projects.done ? currentEvent.projects.done.map((value, index) => (
                                         <Draggable key={value.id} draggableId={value.id} index={index}>
                                             {(provided, snapshot) => (
                                                 <TaskCard task={value} status={status.done} handleRemove={handleRemovingEvent} provided={provided} snapshot={snapshot}></TaskCard>
                                             )}
                                         </Draggable>
-                                    ))}
+                                    )) : <div>Nothing here</div>}
                                     {provided.placeholder}
                                 </div>
                             )
@@ -160,8 +160,8 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                     </div>
                 </div>
             </DragDropContext>
-            {showAddTask ? <AddTask setShowAddTask={setShowAddTask} action={taskStatus} addNewTask={addNewTask}></AddTask>: null}                
-        </>
+            {showAddTask ? <AddTask setShowAddTask={setShowAddTask} action={taskStatus} addNewTask={addNewTask}></AddTask>: null}                           
+        </div>
     )
 }
 

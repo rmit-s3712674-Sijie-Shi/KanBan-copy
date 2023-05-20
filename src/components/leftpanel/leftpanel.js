@@ -37,9 +37,9 @@ const LeftPanel = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
                 </div>
 
                 <div className={styles.eventList}>
-                    {events.map((value, i) => (
+                    {events? events.map((value, i) => (
                         <div key={i} className={`${styles.event} ${value.title === currentEvent.title ? styles.selected : ''}`} onClick={() => setCurrentEvent(value)}>{value.title}</div>
-                    ))}
+                    )) : <div>loading</div>}
                 </div>
             </div>
         </>

@@ -36,16 +36,27 @@ function App() {
   }, [events, initValue])
 
 
-  const getAllProjects = () => {
-    axios.post("http://localhost:3001/getprojects", {
+  const getAllProjects = async () => {
+    await axios.post("http://localhost:3001/getprojects", {
       email: "rikusrocks@gmail.com"
-    }).then(res => console.log(res))
+    }).then(res => {
+      console.log(res)
+      setCurrentEvent(res)
+    })
   }
 
   useEffect(() => {
-    updateEvents()
-    getAllProjects()
-  },[events, updateEvents])
+    async function getData() {
+      await axios.post("http://localhost:3001/getprojects", {
+        email: "rikusrocks@gmail.com"
+      }).then(res => {
+        console.log(res)
+        setEvents(res.data)
+      })
+    }
+    getData()
+    //updateEvents()
+  },[])
 
   return (
     <div className="App">

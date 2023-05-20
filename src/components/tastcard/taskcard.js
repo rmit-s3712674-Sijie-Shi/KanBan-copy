@@ -16,7 +16,7 @@ const TaskCard = ({task, status, handleRemove, provided, snapshot}) => {
                  onMouseLeave={() => setIsShown(false)}
                  >
                 <div className={styles.taskTitle}>
-                    {task.taskName}
+                    {task.title}
                 </div>
                 <div className={styles.description}>
                     {task.detail.description}
