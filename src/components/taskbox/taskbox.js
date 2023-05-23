@@ -45,7 +45,7 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
         console.log(status, id)
         setEvents((prev) => {
             const arrayCopy = [...prev]
-            const index = prev.findIndex((event) => event.title === currentEvent.title)
+            const index = prev.findIndex((event) => event.projects.title === currentEvent.projects.title)
             //const eventCopy = arrayCopy[index]
             arrayCopy[index][status] = arrayCopy[index][status].filter(res => res.id !== id)
             //arrayCopy.splice(index, 1, target)
@@ -63,7 +63,7 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
         const destinationIndex = result.destination.index
         setEvents((prev) => {
             const arrayCopy = [...prev]
-            const index = prev.findIndex((event) => event.title === currentEvent.title)
+            const index = prev.findIndex((event) => event.projects.title === currentEvent.projects.title)
             let task = arrayCopy[index][status].splice(sourceIndex, 1)
             console.log(task)
             arrayCopy[index][targetStatus].splice(destinationIndex, 0, ...task)
@@ -75,7 +75,7 @@ const TaskBox = ({ events, setEvents, currentEvent, setCurrentEvent }) => {
     const addNewTask = useCallback((task, action) => {
         setEvents((prev) => {
             const arrayCopy = [...prev]
-            const index = prev.findIndex((event) => event.title === currentEvent.title)
+            const index = prev.findIndex((event) => event.projects.title === currentEvent.projects.title)
             const eventCopy = arrayCopy[index]
             console.log(action)
             eventCopy[action].push(task)
